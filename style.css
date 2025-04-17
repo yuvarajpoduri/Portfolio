@@ -1,0 +1,1344 @@
+/* GENERAL */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Custom Cursor Styles */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #fafafa;
+  cursor: auto; /* Change to auto to make default cursor visible */
+}
+
+/* Custom cursor elements - set to optional */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #333;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.15s ease-in-out;
+  display: block; /* Change from none to block */
+}
+
+.cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #333;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease-in-out, width 0.2s ease, height 0.2s ease;
+  display: block; /* Change from none to block */
+}
+
+/* Active states for cursor */
+.cursor-grow {
+  transform: translate(-50%, -50%) scale(1.5);
+  background-color: rgba(51, 51, 51, 0.1);
+  border-color: rgba(51, 51, 51, 0.5);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px; /* Adjusts scroll position to account for fixed header */
+}
+
+p {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* TRANSITION */
+
+a,
+.btn {
+  transition: all 300ms ease;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    transform: rotate(-10deg) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Add these to your existing animations section */
+#about,
+#experience,
+#projects,
+#contact,
+#education,
+#certificates {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.section__pic-container {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.section__text {
+  animation: slideInRight 0.8s ease-out;
+}
+
+/* HEADER AND DESKTOP NAV */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  height: 70px;
+}
+
+.header.scrolled {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  padding: 0 5%;
+}
+
+.nav-links-container {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  padding: 0;
+  position: relative;
+}
+
+/* Modified nav links without underline effect */
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 0.8rem;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer; /* Add cursor pointer */
+}
+
+.nav-links a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #000;
+  transform: translateY(-2px);
+}
+
+/* Remove underline effect */
+.nav-links a::after {
+  display: none;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  background: linear-gradient(to right, #333, #888);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: all 0.3s ease;
+  cursor: pointer; /* Add cursor pointer */
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #222, #666);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* HAMBURGER MENU */
+
+#hamburger-nav {
+  display: none;
+}
+
+.hamburger-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 24px;
+  width: 30px;
+  cursor: pointer; /* Add cursor pointer */
+}
+
+.hamburger-icon span {
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-links {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  width: 200px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 1rem 1rem;
+  z-index: 100;
+}
+
+.menu-links a {
+  display: block;
+  padding: 12px 20px;
+  text-align: left;
+  font-size: 1rem;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer; /* Add cursor pointer */
+}
+
+.menu-links a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: translateX(5px);
+}
+
+.menu-links li {
+  list-style: none;
+  transform: translateX(-20px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.menu-links.open li {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Stagger the animation for menu items */
+.menu-links.open li:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.menu-links.open li:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.menu-links.open li:nth-child(3) {
+  transition-delay: 0.3s;
+}
+.menu-links.open li:nth-child(4) {
+  transition-delay: 0.4s;
+}
+.menu-links.open li:nth-child(5) {
+  transition-delay: 0.5s;
+}
+
+.menu-links.open {
+  max-height: 350px;
+}
+
+.hamburger-icon.open span:first-child {
+  transform: rotate(45deg) translate(10px, 5px);
+}
+
+.hamburger-icon.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-icon.open span:last-child {
+  transform: rotate(-45deg) translate(10px, -5px);
+}
+
+/* LANDING SECTION */
+
+/* Replace your current #landing styles with these */
+#landing {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 70px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add this animation for the landing container */
+.landing-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 5%;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 1s ease-out;
+}
+
+.section__pic-container {
+  display: flex;
+  height: 350px;
+  width: 350px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+.section__pic-container:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Photo frame effect */
+.section__pic-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 8px rgba(255, 255, 255, 0.4);
+  z-index: 1;
+}
+
+.section__pic-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+.section__pic-container:hover img {
+  transform: scale(1.08);
+}
+
+.about-pic {
+  border-radius: 1rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+.about-pic:hover {
+  transform: scale(1.05);
+}
+
+.section__text {
+  flex: 1;
+}
+
+.section__text__p1 {
+  margin-bottom: 1rem;
+  color: #666;
+  font-size: 1.2rem;
+  font-weight: 500;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Remove text highlight effect */
+.section__text__p1::after {
+  display: none;
+}
+
+.section__text__p2 {
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  color: #333;
+  font-weight: 600;
+  position: relative;
+}
+
+/* Remove title line effect */
+.title::after {
+  display: none;
+}
+
+#socials-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.icon {
+  cursor: pointer; /* Add cursor pointer */
+  height: 2rem;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+.icon:hover {
+  transform: scale(1.2) rotate(5deg);
+  opacity: 1;
+}
+
+/* SECTIONS */
+
+section {
+  padding: 5rem 0;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 90%;
+  box-sizing: border-box;
+  scroll-margin-top: 70px;
+}
+
+.section-container {
+  display: flex;
+  gap: 4rem;
+  margin-top: 2rem;
+  align-items: center;
+}
+
+/* ABOUT SECTION */
+
+.about-details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+.about-containers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.details-container {
+  padding: 2rem;
+  flex: 1;
+  background: white;
+  border-radius: 1rem;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  transition: all 0.4s ease;
+  min-width: 250px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.details-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-color: #d0d0d0;
+}
+
+/* Container highlight effect */
+.details-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.details-container:hover::before {
+  left: 100%;
+}
+
+.text-container {
+  margin-top: 1.5rem;
+  text-align: justify;
+}
+
+/* EXPERIENCE SECTION - UPDATED SKILLS STYLE */
+
+.experience-details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.experience-sub-title {
+  color: #444;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* New Skills Grid Style */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-8px);
+}
+
+.skill-progress {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.progress-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.skill-item:hover .progress-circle {
+  transform: scale(1.1);
+}
+
+.progress-circle i {
+  position: absolute;
+  font-size: 2rem;
+  color: #333;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.skill-item:hover .progress-circle i {
+  color: #000;
+}
+
+.progress-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.5s ease;
+}
+
+.progress-ring-bg {
+  fill: none;
+  stroke: #f0f0f0;
+  stroke-width: 6;
+}
+
+.progress-ring-circle {
+  fill: none;
+  stroke: #333;
+  stroke-width: 6;
+  stroke-linecap: round;
+  transform-origin: center;
+  transform: rotate(-90deg);
+  transition: stroke-dashoffset 0.8s ease, stroke 0.3s ease;
+}
+
+.skill-item:hover .progress-ring-circle {
+  stroke: #000;
+  stroke-width: 7;
+}
+
+.skill-item span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.skill-item:hover span {
+  color: #000;
+  transform: scale(1.05);
+}
+
+/* Remove text underline effect */
+.skill-item span::after {
+  display: none;
+}
+
+/* PROJECTS SECTION */
+
+.color-container {
+  background: white;
+  transition: all 0.5s ease;
+  transform-origin: center;
+  overflow: hidden;
+}
+
+.color-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.project-img {
+  border-radius: 1rem;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+.color-container:hover .project-img {
+  transform: scale(1.05);
+}
+
+.project-title {
+  margin: 1rem 0;
+  color: #333;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+}
+
+.color-container:hover .project-title {
+  color: #000;
+}
+
+.project-description {
+  margin-bottom: 1rem;
+  color: #555;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.color-container:hover .project-description {
+  color: #333;
+}
+
+/* BUTTONS */
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 0.7rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer; /* Add cursor pointer */
+  border: 1px solid #333;
+  font-size: 0.9rem;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Button highlight effect */
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.btn:hover::before {
+  width: 100%;
+}
+
+.btn-color-1 {
+  background: #333;
+  color: white;
+}
+
+.btn-color-1:hover {
+  background: #555;
+  transform: translateY(-3px);
+  box-shadow: 0 7px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn-color-1:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-color-2 {
+  background: white;
+  color: #333;
+}
+
+.btn-color-2:hover {
+  background: #f0f0f0;
+  transform: translateY(-3px);
+  box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-color-2:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* EDUCATION SECTION */
+
+.education-details-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.education-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.education-item {
+  display: flex;
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  gap: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+  position: relative;
+  border-left: 4px solid #333;
+}
+
+.education-item:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-left-width: 6px;
+}
+
+.education-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  height: 60px;
+  background: #f5f5f5;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.education-item:hover .education-icon {
+  background: #333;
+  color: white;
+  transform: rotate(360deg);
+}
+
+.education-content {
+  flex: 1;
+}
+
+.education-content h3 {
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.education-item:hover .education-content h3 {
+  color: #000;
+}
+
+.education-content h4 {
+  margin-bottom: 0.5rem;
+  color: #666;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.education-item:hover .education-content h4 {
+  color: #444;
+}
+
+.education-content p {
+  color: #777;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.education-item:hover .education-content p {
+  color: #555;
+}
+
+.education-content i {
+  margin-right: 0.3rem;
+  color: #555;
+  transition: all 0.3s ease;
+}
+
+.education-item:hover .education-content i {
+  color: #333;
+}
+
+/* CERTIFICATES SECTION */
+/* Add these styles to your existing stylesheet */
+
+/* Certificate View Icon */
+.certificate-view {
+  margin-top: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.certificate-view i {
+  font-size: 1.2rem;
+  color: #555;
+  transition: all 0.3s ease;
+}
+
+.certificate-view:hover i {
+  color: #000;
+  transform: scale(1.2);
+}
+
+/* Tooltip styling */
+.tooltip {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  left: 30px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  transform: translateY(-50%);
+}
+
+.certificate-view:hover .tooltip {
+  opacity: 1;
+  left: 35px;
+}
+
+/* Hidden certificate image */
+.certificate-img {
+  display: none;
+}
+
+/* Certificate Modal */
+.certificate-modal {
+  display: none;
+  position: fixed;
+  z-index: 1100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: auto;
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.certificate-modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+.certificate-modal-content {
+  background-color: white;
+  margin: auto;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  transform: scale(0.9) translateY(20px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.certificate-modal-content.animate {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.certificate-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.certificate-modal-close {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.certificate-modal-close:hover {
+  color: #000;
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: rotate(90deg);
+}
+
+.certificate-modal-body {
+  padding: 1rem;
+}
+
+.certificate-modal-body img {
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#certificate-modal-title {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .certificate-modal-content {
+    width: 95%;
+  }
+
+  .certificates-container {
+    flex-direction: column;
+  }
+}
+
+/* Custom cursor adjustments */
+.certificate-view,
+.certificate-modal-close {
+  cursor: none;
+}
+
+/* CERTIFICATES SECTION - Enhanced Box Style */
+.certificates-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.certificate-item {
+  flex: 1;
+  min-width: 300px;
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+  position: relative;
+  border-left: 4px solid #333;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.certificate-item:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-left-width: 6px;
+}
+
+.certificate-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  height: 60px;
+  background: #f5f5f5;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.certificate-item:hover .certificate-icon {
+  background: #333;
+  color: white;
+  transform: rotate(360deg);
+}
+
+.certificate-content {
+  flex: 1;
+}
+
+.certificate-content h3 {
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.certificate-item:hover .certificate-content h3 {
+  color: #000;
+}
+
+.certificate-content h4 {
+  margin-bottom: 0.5rem;
+  color: #666;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.certificate-item:hover .certificate-content h4 {
+  color: #444;
+}
+
+.certificate-content p {
+  color: #777;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.certificate-item:hover .certificate-content p {
+  color: #555;
+}
+
+/* Maintain existing certificate view styling */
+.certificate-content .certificate-view {
+  margin-top: 1rem;
+}
+/* Add these to your clickables in the custom cursor script */
+/* In your existing script, add the following to the clickables selector: */
+/* 
+const clickables = document.querySelectorAll(
+  "a, button, .icon, .btn, .hamburger-icon, .logo, .certificate-view, .certificate-modal-close"
+);
+*/
+
+/* CONTACT SECTION - FORM */
+.contact-form-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+  border-left: 3px solid transparent;
+}
+
+.contact-info-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-left: 3px solid #333;
+}
+
+.contact-info-item i {
+  font-size: 1.5rem;
+  color: #333;
+  min-width: 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.contact-info-item:hover i {
+  transform: scale(1.2);
+}
+
+.contact-info-item a {
+  color: #555;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer; /* Add cursor pointer */
+}
+
+.contact-info-item a:hover {
+  color: #000;
+}
+
+/* Enhanced Form Styling */
+form {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+input,
+textarea {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e0e0e0;
+  font-family: "Poppins", sans-serif;
+  outline: none;
+  transition: all 0.3s ease;
+  background: white;
+  cursor: text; /* Add cursor text */
+}
+
+/* Form field effects */
+input:focus,
+textarea:focus {
+  border-color: #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+
+/* Label styling */
+.form-group label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: #777;
+  font-size: 0.9rem;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  background: white;
+  padding: 0 0.5rem;
+}
+
+/* Label animation when input is focused or has value */
+input:focus ~ label,
+textarea:focus ~ label,
+input:not(:placeholder-shown) ~ label,
+textarea:not(:placeholder-shown) ~ label {
+  top: -0.5rem;
+  left: 0.8rem;
+  font-size: 0.75rem;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Placeholder styling */
+input::placeholder,
+textarea::placeholder {
+  color: #999;
+  font-weight: 300;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  opacity: 0.5;
+}
+
+textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+form button {
+  align-self: flex-start;
+}
+
+/* FOOTER */
+footer {
+  background-color: #f8f9fa;
+  padding: 3rem 0;
+  text-align: center;
+  margin-top: 5rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+footer .nav-links {
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+footer p {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* Hide default cursor */
+body,
+a,
+button,
+.icon,
+.btn,
+.hamburger-icon,
+.logo,
+.nav-links a,
+.menu-links a {
+  cursor: none;
+}
+
+/* Keep text cursor for form elements */
+input,
+textarea,
+[contenteditable] {
+  cursor: text;
+}
