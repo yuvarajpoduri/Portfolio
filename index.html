@@ -503,9 +503,9 @@
               <i class="fas fa-code"></i>
             </div>
             <div class="certificate-content">
-              <h3>Data Structures and Algorithms</h3>
-              <h4><i class="fas fa-building"></i> Board Infinity</h4>
-              <p><i class="fas fa-calendar-alt"></i> Jun 2024</p>
+              <h3>Mern Stack</h3>
+              <h4><i class="fas fa-building"></i> Cipher Schools</h4>
+              <p><i class="fas fa-calendar-alt"></i> Feb 2025</p>
               <div class="certificate-view">
                 <i class="fas fa-eye"></i>
                 <span class="tooltip">View Certificate</span>
@@ -513,7 +513,7 @@
                   src="/api/placeholder/800/600"
                   alt="DSA Certificate"
                   class="certificate-img"
-                  data-certificate="dsa-cert"
+                  data-certificate="mern-cert"
                 />
               </div>
             </div>
@@ -534,6 +534,26 @@
                   alt="PHP Certificate"
                   class="certificate-img"
                   data-certificate="php-cert"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="certificate-item">
+            <div class="certificate-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <div class="certificate-content">
+              <h3>Data Structures and Algorithms</h3>
+              <h4><i class="fas fa-building"></i> Board Infinity</h4>
+              <p><i class="fas fa-calendar-alt"></i> Jun 2024</p>
+              <div class="certificate-view">
+                <i class="fas fa-eye"></i>
+                <span class="tooltip">View Certificate</span>
+                <img
+                  src="/api/placeholder/800/600"
+                  alt="DSA Certificate"
+                  class="certificate-img"
+                  data-certificate="dsa-cert"
                 />
               </div>
             </div>
@@ -608,8 +628,6 @@
         </form>
       </div>
     </section>
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
     <footer>
       <p>Copyright &#169; 2025 Yuvaraj Poduri. All Rights Reserved.</p>
     </footer>
@@ -622,74 +640,6 @@
         icon.classList.toggle("open");
       }
 
-      window.addEventListener("scroll", function () {
-        const header = document.querySelector(".header");
-        if (window.scrollY > 50) {
-          header.classList.add("scrolled");
-        } else {
-          header.classList.remove("scrolled");
-        }
-      });
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const circles = document.querySelectorAll(".progress-circle");
-
-        circles.forEach((circle) => {
-          const percentage = circle.getAttribute("data-percentage");
-          const circumference = 2 * Math.PI * 35; // r = 35
-          const offset = circumference - (percentage / 100) * circumference;
-
-          const progressRing = circle.querySelector(".progress-ring-circle");
-          progressRing.style.strokeDasharray = `${circumference} ${circumference}`;
-          progressRing.style.strokeDashoffset = offset;
-        });
-      });
-
-      <!-- Custom cursor elements -->
-      // Custom cursor functionality
-      const cursorDot = document.querySelector(".cursor-dot");
-      const cursorOutline = document.querySelector(".cursor-outline");
-
-      // Track cursor position
-      window.addEventListener("mousemove", function (e) {
-        const posX = e.clientX;
-        const posY = e.clientY;
-
-        // Animate cursor dot to follow cursor position exactly
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
-
-        // Animate cursor outline with slight delay for smooth effect
-        setTimeout(() => {
-          cursorOutline.style.left = `${posX}px`;
-          cursorOutline.style.top = `${posY}px`;
-        }, 100);
-      });
-
-      // Add hover effect for clickable elements
-      const clickables = document.querySelectorAll(
-        "a, button, .icon, .btn, .hamburger-icon, .logo"
-      );
-      clickables.forEach((item) => {
-        item.addEventListener("mouseenter", () => {
-          cursorOutline.classList.add("cursor-grow");
-        });
-        item.addEventListener("mouseleave", () => {
-          cursorOutline.classList.remove("cursor-grow");
-        });
-      });
-
-      // Hide cursor when mouse leaves window
-      document.addEventListener("mouseleave", () => {
-        cursorDot.style.opacity = "0";
-        cursorOutline.style.opacity = "0";
-      });
-
-      // Show cursor when mouse enters window
-      document.addEventListener("mouseenter", () => {
-        cursorDot.style.opacity = "1";
-        cursorOutline.style.opacity = "1";
-      });
       // Certificate Modal Functionality
       document.addEventListener("DOMContentLoaded", function () {
         const certificateViews = document.querySelectorAll(".certificate-view");
@@ -707,6 +657,11 @@
           "php-cert": {
             src: "./assets/php.png",
             title: "Building Web Applications in PHP",
+          },
+
+          "mern-cert": {
+            src: "./assets/cipher.png",
+            title: "Mern Stack",
           },
         };
 
