@@ -53,10 +53,11 @@
         </div>
         <div class="section__text">
           <h1 class="title">Yuvaraj Poduri</h1>
+          <p class="section__text__p2">Full Stack Developer</p>
 
           <div class="text-container">
             <p>
-              I am a passionate Full Stack Developer with a strong foundation in
+              I'm a passionate Full Stack Developer with a strong foundation in
               JavaScript, Java, and PHP. Currently pursuing my B.Tech in
               Computer Science and Engineering at Lovely Professional University
               with a CGPA of 7.59. I excel in developing web applications using
@@ -712,6 +713,39 @@
             document.body.style.overflow = "auto"; // Re-enable scrolling
           }, 300);
         }
+      });
+      // Add this to your existing script section at the bottom of your HTML file
+      document.addEventListener("DOMContentLoaded", function () {
+        const progressCircles = document.querySelectorAll(".progress-circle");
+
+        progressCircles.forEach(function (circle) {
+          // Get the percentage value from data attribute
+          const percentage = parseInt(circle.getAttribute("data-percentage"));
+
+          // Get the SVG circle element
+          const svgCircle = circle.querySelector(".progress-ring-circle");
+
+          // Calculate the radius from the circle's r attribute
+          const radius = svgCircle.getAttribute("r");
+
+          // Calculate the circumference
+          const circumference = 2 * Math.PI * radius;
+
+          // Calculate the dash offset based on percentage
+          const dashOffset = circumference * (1 - percentage / 100);
+
+          // Set the stroke dasharray to the circumference
+          svgCircle.style.strokeDasharray = circumference;
+
+          // Set the stroke dashoffset to show only the percentage amount
+          svgCircle.style.strokeDashoffset = dashOffset;
+
+          // Add animation to fill the circle
+          setTimeout(() => {
+            svgCircle.style.transition = "stroke-dashoffset 1.5s ease-in-out";
+            svgCircle.style.strokeDashoffset = dashOffset;
+          }, 300);
+        });
       });
     </script>
   </body>
