@@ -15,44 +15,6 @@ body {
   cursor: auto; /* Change to auto to make default cursor visible */
 }
 
-/* Custom cursor elements - set to optional */
-.cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 8px;
-  height: 8px;
-  background-color: #333;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.15s ease-in-out;
-  display: block; /* Change from none to block */
-}
-
-.cursor-outline {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 40px;
-  height: 40px;
-  border: 1px solid #333;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: transform 0.15s ease-in-out, width 0.2s ease, height 0.2s ease;
-  display: block; /* Change from none to block */
-}
-
-/* Active states for cursor */
-.cursor-grow {
-  transform: translate(-50%, -50%) scale(1.5);
-  background-color: rgba(51, 51, 51, 0.1);
-  border-color: rgba(51, 51, 51, 0.5);
-}
-
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 70px; /* Adjusts scroll position to account for fixed header */
@@ -1153,13 +1115,6 @@ section {
 .certificate-content .certificate-view {
   margin-top: 1rem;
 }
-/* Add these to your clickables in the custom cursor script */
-/* In your existing script, add the following to the clickables selector: */
-/* 
-const clickables = document.querySelectorAll(
-  "a, button, .icon, .btn, .hamburger-icon, .logo, .certificate-view, .certificate-modal-close"
-);
-*/
 
 /* CONTACT SECTION - FORM */
 .contact-form-container {
@@ -1321,24 +1276,4 @@ footer .nav-links {
 footer p {
   color: #777;
   font-size: 0.9rem;
-}
-
-/* Hide default cursor */
-body,
-a,
-button,
-.icon,
-.btn,
-.hamburger-icon,
-.logo,
-.nav-links a,
-.menu-links a {
-  cursor: none;
-}
-
-/* Keep text cursor for form elements */
-input,
-textarea,
-[contenteditable] {
-  cursor: text;
 }
